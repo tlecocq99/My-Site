@@ -25,17 +25,6 @@ const experiences = [
       "Built Clear Choice Pools: Business website with SEO optimization"
     ]
   },
-  {
-    title: "Music Performance & Teaching",
-    company: "Various Venues & Private Students",
-    period: "2018 - 2024",
-    description: "Professional musician and music instructor, developing strong communication skills, attention to detail, and ability to work under pressure.",
-    achievements: [
-      "Managed multiple students and performance schedules simultaneously",
-      "Developed strong presentation and communication skills",
-      "Demonstrated reliability and professionalism in client-facing roles"
-    ]
-  }
 ];
 
 export function Experience() {

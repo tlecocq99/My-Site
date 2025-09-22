@@ -21,7 +21,7 @@ export function LocalFocus() {
             </div>
             <h3 className="font-semibold mb-2">Local Presence</h3>
             <p className="text-sm text-muted-foreground">
-              Born and raised in Louisiana, deeply connected to the local community and business landscape
+              Have lived over 15 years in Louisiana, deeply connected to the local community and business landscape
             </p>
           </Card>
 
@@ -41,7 +41,7 @@ export function LocalFocus() {
             </div>
             <h3 className="font-semibold mb-2">Cultural Understanding</h3>
             <p className="text-sm text-muted-foreground">
-              Deep understanding of Louisiana culture and business practices
+              Deep understanding of numerous cultures worldwide
             </p>
           </Card>
 

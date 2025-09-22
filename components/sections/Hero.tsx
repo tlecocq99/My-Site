@@ -30,7 +30,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <span className="block">Hi, I'm</span>
-              <span className="block bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent pb-3">
                 Thomas Lecocq
               </span>
             </motion.h1>

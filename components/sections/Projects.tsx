@@ -7,40 +7,66 @@ import { ExternalLink, Github } from 'lucide-react';
 const projects = [
   {
     title: "Oslo-Vikings",
-    description: "Modern, responsive website for the Oslo Vikings American Football team built with Next.js 14 and TypeScript. Features complete team management system powered by Google Sheets API integration - the entire team roster and player cards are dynamically populated from a connected Google Sheet, enabling real-time content management. Also includes news system, game scheduling, and Norwegian Viking-themed design with accessibility compliance.",
-    image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
-    technologies: ["Next.js 14", "TypeScript", "Tailwind CSS", "Google Sheets API", "Google Cloud Platform", "App Router", "SEO Optimization", "WCAG 2.1 AA"],
+    description:
+      "Modern, responsive website for the Oslo Vikings American Football team built with Next.js 14 and TypeScript. Features complete team management system powered by Google Sheets API integration - the entire team roster (including staff) and player cards are dynamically populated from a connected Google Sheet, enabling real-time content management. Also includes news system, game scheduling, and Norwegian Viking-themed design with accessibility compliance.",
+    image: "/images/vikingsPreview.png",
+    technologies: [
+      "Next.js 14",
+      "TypeScript",
+      "Tailwind CSS",
+      "Dynamic Google Sheets API",
+      "Google Cloud Platform",
+      "App Router",
+      "SEO Optimization",
+      "WCAG 2.1 AA",
+    ],
     github: "https://github.com/tlecocq99/Oslo-Vikings",
     live: "https://oslo-vikings.vercel.app/",
-    featured: true
+    featured: true,
   },
   {
     title: "Oil-X",
-    description: "Cryptocurrency website concept for an up-and-coming crypto coin. Demonstrates modern web design principles, responsive layouts, and engaging user interfaces for the blockchain/crypto industry.",
-    image: "https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800",
-    technologies: ["React", "Next.js", "Modern CSS", "Responsive Design", "Crypto/Blockchain UI"],
+    description:
+      "Cryptocurrency website concept for an up-and-coming crypto coin. Demonstrates modern web design principles, responsive layouts, and engaging user interfaces for the blockchain/crypto industry.",
+    image: "/images/oilxPreview.png",
+    technologies: [
+      "React",
+      "Next.js",
+      "Modern CSS",
+      "Responsive Design",
+      "Crypto/Blockchain UI",
+      "Dynamic API Integration",
+    ],
     github: "https://github.com/tlecocq99/Oil-X",
     live: "https://oil-x.vercel.app/",
-    featured: true
+    featured: true,
   },
   {
     title: "Clear Choice Pools",
-    description: "Professional business website with SEO optimization, responsive design, and contact forms. Demonstrates client-focused development and modern web standards.",
-    image: "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=800",
-    technologies: ["Next.js", "SEO Optimization", "Responsive Design", "Bootstrap", "Contact Forms"],
-    github: "https://github.com",
-    live: "https://example.com",
-    featured: false
+    description:
+      "Professional business website with SEO optimization, responsive design, and contact forms. Demonstrates client-focused development and modern web standards.",
+    image: "/images/clearChoicePreview.png",
+    technologies: [
+      "Next.js",
+      "SEO Optimization",
+      "Responsive Design",
+      "Bootstrap",
+    ],
+    github: "https://github.com/tlecocq99/ClearChoice",
+    live: "https://clearchoicepools.org/",
+    featured: false,
   },
   {
     title: "Hummingbird Sips",
-    description: "E-commerce platform for specialty beverages with shopping cart functionality, product catalog, and payment integration. Shows full-stack development skills.",
-    image: "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800",
-    technologies: ["React", "Express", "E-commerce", "Payment Integration", "Database Design"],
-    github: "https://github.com",
+    description:
+      "E-commerce platform for specialty beverages with shopping cart functionality, product catalog, and payment integration. Shows full-stack development skills.",
+    image:
+      "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800",
+    technologies: ["React", "Express", "Vite"],
+    github: "https://github.com/tlecocq99/HummingbirdMobileSips",
     live: "https://example.com",
-    featured: false
-  }
+    featured: false,
+  },
 ];
 
 export function Projects() {
