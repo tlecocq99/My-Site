@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ExternalLink, Github } from 'lucide-react';
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 
 const projects = [
   {
@@ -70,37 +71,45 @@ const projects = [
 ];
 
 export function Projects() {
-  const featuredProjects = projects.filter(p => p.featured);
-  const otherProjects = projects.filter(p => !p.featured);
+  const featuredProjects = projects.filter((p) => p.featured);
+  const otherProjects = projects.filter((p) => !p.featured);
 
   return (
     <section id="projects" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Featured Projects</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Featured Projects
+          </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A selection of recent work that showcases my technical skills and problem-solving approach
+            A selection of recent work that showcases my technical skills and
+            problem-solving approach
           </p>
         </div>
 
         {/* Featured Projects */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {featuredProjects.map((project, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <Card
+              key={index}
+              className="overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
               <div className="aspect-video relative overflow-hidden">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-                
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
-                    <span 
+                    <span
                       key={tech}
                       className="bg-primary/10 text-primary px-2 py-1 rounded-md text-xs font-medium"
                     >
@@ -108,16 +117,24 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
-                
+
                 <div className="flex gap-3">
                   <Button variant="outline" size="sm" asChild>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github size={16} className="mr-2" />
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <SiGithub size={16} className="mr-2" />
                       Code
                     </a>
                   </Button>
                   <Button size="sm" asChild>
-                    <a href={project.live} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <ExternalLink size={16} className="mr-2" />
                       Live Demo
                     </a>
@@ -130,27 +147,48 @@ export function Projects() {
 
         {/* Other Projects */}
         <div>
-          <h3 className="text-2xl font-semibold mb-8 text-center">Other Notable Projects</h3>
+          <h3 className="text-2xl font-semibold mb-8 text-center">
+            Other Notable Projects
+          </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {otherProjects.map((project, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow duration-300">
+              <Card
+                key={index}
+                className="p-6 hover:shadow-lg transition-shadow duration-300"
+              >
                 <div className="flex justify-between items-start mb-3">
                   <h4 className="text-lg font-semibold">{project.title}</h4>
                   <div className="flex gap-2">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github size={18} className="text-muted-foreground hover:text-foreground transition-colors" />
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <SiGithub
+                        size={18}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                      />
                     </a>
-                    <a href={project.live} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink size={18} className="text-muted-foreground hover:text-foreground transition-colors" />
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink
+                        size={18}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                      />
                     </a>
                   </div>
                 </div>
-                
-                <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
-                
+
+                <p className="text-muted-foreground text-sm mb-4">
+                  {project.description}
+                </p>
+
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <span 
+                    <span
                       key={tech}
                       className="bg-muted text-muted-foreground px-2 py-1 rounded-md text-xs"
                     >

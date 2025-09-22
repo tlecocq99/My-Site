@@ -1,29 +1,28 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { motion } from "framer-motion";
+import { ArrowDown, Mail } from "lucide-react";
+import { SiGithub, SiLinkedin } from "react-icons/si";
+import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section 
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/20"
-    >
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div 
+        <motion.div
           className="space-y-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           {/* Hero Content */}
-          <motion.div 
+          <motion.div
             className="space-y-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <motion.h1 
+            <motion.h1
               className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -34,17 +33,18 @@ export function Hero() {
                 Thomas Lecocq
               </span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Junior Web Developer specializing in React & Next.js, ready to bring fresh energy and modern skills to your team
+              Junior Web Developer specializing in React & Next.js, ready to
+              bring fresh energy and modern skills to your team
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               className="flex items-center justify-center space-x-2 text-sm text-muted-foreground"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -56,18 +56,18 @@ export function Hero() {
           </motion.div>
 
           {/* CTA Buttons */}
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 text-lg"
               asChild
             >
-              <motion.a 
+              <motion.a
                 href="#projects"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -75,14 +75,14 @@ export function Hero() {
                 View My Work
               </motion.a>
             </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg" 
+
+            <Button
+              variant="outline"
+              size="lg"
               className="px-8 py-3 text-lg"
               asChild
             >
-              <motion.a 
+              <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -93,50 +93,63 @@ export function Hero() {
           </motion.div>
 
           {/* Social Links */}
-          <motion.div 
+          <motion.div
             className="flex justify-center space-x-6 pt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
             <motion.a
-              href="https://github.com"
+              href="https://github.com/tlecocq99"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Github size={24} />
+              <SiGithub size={32} />
             </motion.a>
             <motion.a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/thomaslecocq99"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Linkedin size={24} />
+              <SiLinkedin size={32} />
             </motion.a>
             <motion.a
-              href="mailto:thomas@example.com"
+              href="mailto:tlecocq99@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Mail size={24} />
+              <Mail size={32} />
             </motion.a>
           </motion.div>
 
           {/* Scroll Indicator */}
-          <motion.div 
-            className="pt-16"
+          <motion.div
+            className="pt-16 flex justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1 }}
           >
-            <ArrowDown size={24} className="text-muted-foreground" />
+            <motion.div
+              animate={{ y: [0, 8, 0], opacity: [0.6, 1, 0.6] }}
+              transition={{
+                duration: 1.4,
+                ease: "easeInOut",
+                repeat: Infinity,
+              }}
+            >
+              <ArrowDown
+                size={24}
+                className="text-muted-foreground"
+                aria-hidden="true"
+              />
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

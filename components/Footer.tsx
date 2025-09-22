@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Mail, Heart } from "lucide-react";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -62,7 +63,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Github size={20} />
+                <SiGithub size={26} />
               </a>
               <a
                 href="https://www.linkedin.com/in/thomaslecocq99/"
@@ -70,13 +71,13 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Linkedin size={20} />
+                <SiLinkedin size={26} />
               </a>
               <a
                 href="mailto:tlecocq99@gmail.com"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Mail size={20} />
+                <Mail size={26} />
               </a>
             </div>
           </div>
