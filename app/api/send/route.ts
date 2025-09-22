@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     }
 
     const { error } = await resend.emails.send({
-      from: process.env.EMAIL_FROM || "Portfolio <onboarding@resend.dev>",
+      from: process.env.EMAIL_FROM || "Portfolio <contact@thomaslecocq.com>",
       to: (process.env.EMAIL_TO || "tlecocq99@gmail.com").split(",").map(s => s.trim()),
       subject: `New contact from ${name}`,
       replyTo: email,
