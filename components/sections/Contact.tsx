@@ -19,7 +19,7 @@ export function Contact() {
     e.preventDefault();
     setStatus('submitting');
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('/api/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
