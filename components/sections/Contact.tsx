@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, MessageSquare, Send, MapPin } from 'lucide-react';
+import { set } from 'date-fns';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -13,11 +14,24 @@ export function Contact() {
     email: '',
     message: ''
   });
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setStatus('submitting');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      if (!res.ok) throw new Error('Request failed');
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      setStatus('error');
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -131,10 +145,14 @@ export function Contact() {
                 />
               </div>
 
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" disabled={status === 'submitting'}>
                 <Send size={16} className="mr-2" />
-                Send Message
+                {status === 'submitting' ? 'Sending...' : "Send Message"}
               </Button>
+              <div className="text-sm" aria-live="polite">
+                {status === 'success' && <span className="text-green-500">Thank you! Your message has been sent. I will get back to you shortly.</span>}
+                {status === 'error' && <span className="text-red-500">Oops! Something went wrong. Please try again later.</span>}
+              </div>
             </form>
           </Card>
         </div>
