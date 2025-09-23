@@ -65,7 +65,7 @@ const projects = [
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800",
     technologies: ["React", "Express", "Vite"],
     github: "https://github.com/tlecocq99/HummingbirdMobileSips",
-    live: "https://example.com",
+    live: "https://tlecocq99.github.io/HummingbirdMobileSips/",
     featured: false,
   },
 ];
@@ -92,7 +92,7 @@ export function Projects() {
           {featuredProjects.map((project, index) => (
             <Card
               key={index}
-              className="overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="overflow-hidden hover:shadow-xl transition-shadow duration-300 flex h-full flex-col"
             >
               <div className="aspect-video relative overflow-hidden">
                 <img
@@ -101,44 +101,46 @@ export function Projects() {
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="bg-primary/10 text-primary px-2 py-1 rounded-md text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-2 mb-4 flexbox">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="bg-primary/10 text-primary px-2 py-1 rounded-md text-xs font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
 
-                <div className="flex gap-3">
-                  <Button variant="outline" size="sm" asChild>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <SiGithub size={16} className="mr-2" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink size={16} className="mr-2" />
-                      Live Demo
-                    </a>
-                  </Button>
+                  <div className="flex gap-3">
+                    <Button variant="outline" size="sm" asChild>
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <SiGithub size={16} className="mr-2" />
+                        Code
+                      </a>
+                    </Button>
+                    <Button size="sm" asChild>
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink size={16} className="mr-2" />
+                        Live Demo
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </Card>
@@ -154,47 +156,51 @@ export function Projects() {
             {otherProjects.map((project, index) => (
               <Card
                 key={index}
-                className="p-6 hover:shadow-lg transition-shadow duration-300"
+                className="p-6 hover:shadow-lg transition-shadow duration-300 flex h-full flex-col"
               >
                 <div className="flex justify-between items-start mb-3">
                   <h4 className="text-lg font-semibold">{project.title}</h4>
-                  <div className="flex gap-2">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <SiGithub
-                        size={18}
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      />
-                    </a>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink
-                        size={18}
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      />
-                    </a>
-                  </div>
                 </div>
 
                 <p className="text-muted-foreground text-sm mb-4">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="bg-muted text-muted-foreground px-2 py-1 rounded-md text-xs"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="bg-muted text-muted-foreground px-2 py-1 rounded-md text-xs"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Live Demo button to match featured projects */}
+                  <div className="flex gap-3 mt-4">
+                    <Button variant="outline" size="sm" asChild>
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <SiGithub size={16} className="mr-2" />
+                        Code
+                      </a>
+                    </Button>
+                    <Button size="sm" asChild>
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink size={16} className="mr-2" />
+                        Live Demo
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </Card>
             ))}
