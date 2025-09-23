@@ -41,7 +41,7 @@ export function LocalFocus() {
             </div>
             <h3 className="font-semibold mb-2">Cultural Understanding</h3>
             <p className="text-sm text-muted-foreground">
-              Deep understanding of numerous cultures worldwide
+              Having lived in multiple countries, I have a deep understanding of numerous cultures worldwide
             </p>
           </Card>
 

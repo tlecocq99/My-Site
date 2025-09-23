@@ -16,7 +16,7 @@ const skills = {
     "npm/yarn", "Webpack", "Vite", "ESLint", "Prettier"
   ],
   "Soft Skills": [
-    "Problem Solving", "Team Collaboration", "Communication", "Adaptability", 
+    "Fluent in both English and French", "Problem Solving", "Team Collaboration", "Communication", "Adaptability",
     "Time Management", "Attention to Detail", "Continuous Learning", "Client Relations"
   ]
 };
