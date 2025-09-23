@@ -9,7 +9,7 @@ const projects = [
   {
     title: "Oslo-Vikings",
     description:
-      "Modern, responsive website for the Oslo Vikings American Football team built with Next.js 14 and TypeScript. Features complete team management system powered by Google Sheets API integration - the entire team roster (including staff) and player cards are dynamically populated from a connected Google Sheet, enabling real-time content management. Also includes news system, game scheduling, and Norwegian Viking-themed design with accessibility compliance.",
+      "Modern, responsive website for the Oslo Vikings American Football team built with Next.js 14 and TypeScript. It features complete team management system powered by Google Sheets API integration. The entire team roster (including staff) and player cards are dynamically populated from a connected Google Sheet, enabling real-time content management. Also includes news system, game scheduling, and Norwegian Viking-themed design with accessibility compliance.",
     image: "/images/vikingsPreview.png",
     technologies: [
       "Next.js 14",
