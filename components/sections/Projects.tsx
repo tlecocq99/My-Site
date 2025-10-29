@@ -1,16 +1,40 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { ExternalLink } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 
-const projects = [
+type Project = {
+  title: string;
+  summary: string;
+  description: string;
+  image: string;
+  video: string;
+  technologies: string[];
+  github: string;
+  live: string;
+  featured: boolean;
+};
+
+const projects: Project[] = [
   {
     title: "Oslo-Vikings",
+    summary:
+      "Dynamic American football club platform with live roster management powered by Google Sheets integration.",
     description:
       "Modern, responsive website for the Oslo Vikings American Football team built with Next.js 14 and TypeScript. It features complete team management system powered by Google Sheets API integration. The entire team roster (including staff) and player cards are dynamically populated from a connected Google Sheet, enabling real-time content management. Also includes news system, game scheduling, and Norwegian Viking-themed design with accessibility compliance.",
     image: "/images/vikingsPreview.png",
+    video: "/previewGif/vikingsPreview.mp4",
     technologies: [
       "Next.js 14",
       "TypeScript",
@@ -27,9 +51,12 @@ const projects = [
   },
   {
     title: "Oil-X",
+    summary:
+      "Futuristic crypto brand concept with immersive visuals and responsive layouts tailored to blockchain audiences.",
     description:
       "Cryptocurrency website concept for an up-and-coming crypto coin. Demonstrates modern web design principles, responsive layouts, and engaging user interfaces for the blockchain/crypto industry.",
     image: "/images/oilxPreview.png",
+    video: "/previewGif/oilxPreview.mp4",
     technologies: [
       "React",
       "Next.js",
@@ -44,9 +71,12 @@ const projects = [
   },
   {
     title: "Clear Choice Pools",
+    summary:
+      "Lead-generating pool service site with SEO-first architecture and easy-to-manage content structure.",
     description:
       "Professional business website with SEO optimization, responsive design, and contact forms. Demonstrates client-focused development and modern web standards.",
     image: "/images/clearChoicePreview.png",
+    video: "/previewGif/clearChoicePreview.mp4",
     technologies: [
       "Next.js",
       "SEO Optimization",
@@ -59,10 +89,12 @@ const projects = [
   },
   {
     title: "Hummingbird Sips",
+    summary:
+      "Specialty beverage storefront featuring product catalog, cart, and checkout flows for a boutique brand.",
     description:
-      "E-commerce platform for specialty beverages with shopping cart functionality, product catalog, and payment integration. Shows full-stack development skills.",
-    image:
-      "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "Website for a mobile bartending service specializing in craft cocktails for events. Features product packages with prices. Built with React and Vite.",
+    image: "/images/hummingbirdPreview.png",
+    video: "/previewGif/hummingbirdPreview.mp4",
     technologies: ["React", "Express", "Vite"],
     github: "https://github.com/tlecocq99/HummingbirdMobileSips",
     live: "https://tlecocq99.github.io/HummingbirdMobileSips/",
@@ -71,8 +103,85 @@ const projects = [
 ];
 
 export function Projects() {
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [shouldPlay, setShouldPlay] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
   const featuredProjects = projects.filter((p) => p.featured);
   const otherProjects = projects.filter((p) => !p.featured);
+
+  const handleOpenProject = (project: Project) => {
+    setActiveProject(project);
+  };
+
+  const handleCloseProject = (open: boolean) => {
+    if (!open) {
+      setActiveProject(null);
+    }
+  };
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!activeProject) {
+      setShouldPlay(false);
+      if (video) {
+        video.pause();
+        try {
+          video.currentTime = 0;
+        } catch (error) {
+          // Ignore errors when resetting before metadata is ready
+        }
+      }
+      return;
+    }
+
+    setShouldPlay(false);
+
+    if (!video) {
+      const timeout = setTimeout(() => setShouldPlay(true), 500);
+      return () => clearTimeout(timeout);
+    }
+
+    const handleLoadedData = () => {
+      try {
+        video.currentTime = 0;
+      } catch (error) {
+        // Ignore errors when metadata isn’t ready yet
+      }
+    };
+
+    video.addEventListener("loadeddata", handleLoadedData);
+    video.load();
+
+    const timeout = setTimeout(() => setShouldPlay(true), 500);
+
+    return () => {
+      clearTimeout(timeout);
+      video.removeEventListener("loadeddata", handleLoadedData);
+    };
+  }, [activeProject]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (shouldPlay) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          /* autoplay might be blocked; keep silent */
+        });
+      }
+    } else {
+      video.pause();
+      try {
+        video.currentTime = 0;
+      } catch (error) {
+        // Ignore errors when resetting before metadata is ready
+      }
+    }
+  }, [shouldPlay, activeProject]);
 
   return (
     <section id="projects" className="py-20">
@@ -92,57 +201,23 @@ export function Projects() {
           {featuredProjects.map((project, index) => (
             <Card
               key={index}
-              className="overflow-hidden hover:shadow-xl transition-shadow duration-300 flex h-full flex-col"
+              className="overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="aspect-video relative overflow-hidden">
+              <button
+                type="button"
+                onClick={() => handleOpenProject(project)}
+                className="group aspect-video relative w-full overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                aria-label={`Open preview for ${project.title}`}
+              >
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-              </div>
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="mt-auto">
-                  <div className="flex flex-wrap gap-2 mb-4 flexbox">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="bg-primary/10 text-primary px-2 py-1 rounded-md text-xs font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Button variant="outline" size="sm" asChild>
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <SiGithub size={16} className="mr-2" />
-                        Code
-                      </a>
-                    </Button>
-                    <Button size="sm" asChild>
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink size={16} className="mr-2" />
-                        Live Demo
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </div>
+                <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/50 text-sm font-semibold uppercase tracking-wide text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  View Project
+                </span>
+              </button>
             </Card>
           ))}
         </div>
@@ -156,57 +231,101 @@ export function Projects() {
             {otherProjects.map((project, index) => (
               <Card
                 key={index}
-                className="p-6 hover:shadow-lg transition-shadow duration-300 flex h-full flex-col"
+                className="overflow-hidden hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="flex justify-between items-start mb-3">
-                  <h4 className="text-lg font-semibold">{project.title}</h4>
-                </div>
-
-                <p className="text-muted-foreground text-sm mb-4">
-                  {project.description}
-                </p>
-
-                <div className="mt-auto">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="bg-muted text-muted-foreground px-2 py-1 rounded-md text-xs"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Live Demo button to match featured projects */}
-                  <div className="flex gap-3 mt-4">
-                    <Button variant="outline" size="sm" asChild>
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <SiGithub size={16} className="mr-2" />
-                        Code
-                      </a>
-                    </Button>
-                    <Button size="sm" asChild>
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink size={16} className="mr-2" />
-                        Live Demo
-                      </a>
-                    </Button>
-                  </div>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => handleOpenProject(project)}
+                  className="group aspect-video relative w-full overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  aria-label={`Open preview for ${project.title}`}
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-semibold uppercase tracking-wide text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    View Project
+                  </span>
+                </button>
               </Card>
             ))}
           </div>
         </div>
       </div>
+
+      <Dialog open={!!activeProject} onOpenChange={handleCloseProject}>
+        <DialogContent className="max-w-4xl md:max-w-5xl">
+          {activeProject && (
+            <div className="space-y-6">
+              <DialogHeader className="space-y-3">
+                <DialogTitle>{activeProject.title}</DialogTitle>
+                <DialogDescription className="text-base text-muted-foreground">
+                  {activeProject.summary}
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="space-y-4">
+                <div className="aspect-video overflow-hidden rounded-lg border border-border bg-black">
+                  <video
+                    key={activeProject.video}
+                    ref={videoRef}
+                    muted
+                    playsInline
+                    loop
+                    preload="auto"
+                    controls={false}
+                    controlsList="nodownload nofullscreen noremoteplayback"
+                    disablePictureInPicture
+                    className="h-full w-full object-cover"
+                  >
+                    <source src={activeProject.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                <p className="text-muted-foreground leading-relaxed">
+                  {activeProject.description}
+                </p>
+
+                <div className="flex flex-wrap justify-center gap-2 text-center">
+                  {activeProject.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="bg-primary/10 text-primary px-2 py-1 rounded-md text-xs font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-3 pt-2">
+                  <Button variant="outline" size="sm" asChild>
+                    <a
+                      href={activeProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <SiGithub size={16} className="mr-2" />
+                      Code
+                    </a>
+                  </Button>
+                  <Button size="sm" asChild>
+                    <a
+                      href={activeProject.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink size={16} className="mr-2" />
+                      Live Demo
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
