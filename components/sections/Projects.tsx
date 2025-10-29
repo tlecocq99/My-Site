@@ -75,7 +75,7 @@ const projects: Project[] = [
       "Lead-generating pool service site with SEO-first architecture and easy-to-manage content structure.",
     description:
       "Professional business website with SEO optimization, responsive design, and contact forms. Demonstrates client-focused development and modern web standards.",
-    image: "/images/clearChoicePreview.png",
+    image: "/images/clearchoicePreview.png",
     video: "/previewGif/clearChoicePreview.mp4",
     technologies: [
       "Next.js",
