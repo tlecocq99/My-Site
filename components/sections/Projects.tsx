@@ -76,7 +76,7 @@ const projects: Project[] = [
     description:
       "Professional business website with SEO optimization, responsive design, and contact forms. Demonstrates client-focused development and modern web standards.",
     image: "/images/clearchoicePreview.png",
-    video: "/previewGif/clearChoicePreview.webm",
+    video: "/previewGif/clearchoicePreview.webm",
     technologies: [
       "Next.js",
       "SEO Optimization",
