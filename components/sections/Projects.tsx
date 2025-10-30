@@ -34,7 +34,7 @@ const projects: Project[] = [
     description:
       "Modern, responsive website for the Oslo Vikings American Football team built with Next.js 14 and TypeScript. It features complete team management system powered by Google Sheets API integration. The entire team roster (including staff) and player cards are dynamically populated from a connected Google Sheet, enabling real-time content management. Also includes news system, game scheduling, and Norwegian Viking-themed design with accessibility compliance.",
     image: "/images/vikingsPreview.png",
-    video: "/previewGif/vikingsPreview.mp4",
+    video: "/previewGif/vikingsPreview.webm",
     technologies: [
       "Next.js 14",
       "TypeScript",
@@ -56,7 +56,7 @@ const projects: Project[] = [
     description:
       "Cryptocurrency website concept for an up-and-coming crypto coin. Demonstrates modern web design principles, responsive layouts, and engaging user interfaces for the blockchain/crypto industry.",
     image: "/images/oilxPreview.png",
-    video: "/previewGif/oilxPreview.mp4",
+    video: "/previewGif/oilxPreviewo.mp4",
     technologies: [
       "React",
       "Next.js",
@@ -266,7 +266,7 @@ export function Projects() {
               </DialogHeader>
 
               <div className="space-y-4">
-                <div className="aspect-video overflow-hidden rounded-lg border border-border bg-black">
+                <div className="aspect-video overflow-hidden rounded-lg">
                   <video
                     key={activeProject.video}
                     ref={videoRef}
