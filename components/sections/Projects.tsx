@@ -56,7 +56,7 @@ const projects: Project[] = [
     description:
       "Cryptocurrency website concept for an up-and-coming crypto coin. Demonstrates modern web design principles, responsive layouts, and engaging user interfaces for the blockchain/crypto industry.",
     image: "/images/oilxPreview.png",
-    video: "/previewGif/oilxPreviewo.mp4",
+    video: "/previewGif/oilxPreview.webm",
     technologies: [
       "React",
       "Next.js",
@@ -76,7 +76,7 @@ const projects: Project[] = [
     description:
       "Professional business website with SEO optimization, responsive design, and contact forms. Demonstrates client-focused development and modern web standards.",
     image: "/images/clearchoicePreview.png",
-    video: "/previewGif/clearChoicePreview.mp4",
+    video: "/previewGif/clearChoicePreview.webm",
     technologies: [
       "Next.js",
       "SEO Optimization",
@@ -94,7 +94,7 @@ const projects: Project[] = [
     description:
       "Website for a mobile bartending service specializing in craft cocktails for events. Features product packages with prices. Built with React and Vite.",
     image: "/images/hummingbirdPreview.png",
-    video: "/previewGif/hummingbirdPreview.mp4",
+    video: "/previewGif/hummingbirdPreview.webm",
     technologies: ["React", "Express", "Vite"],
     github: "https://github.com/tlecocq99/HummingbirdMobileSips",
     live: "https://tlecocq99.github.io/HummingbirdMobileSips/",
