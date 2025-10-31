@@ -255,9 +255,9 @@ export function Projects() {
       </div>
 
       <Dialog open={!!activeProject} onOpenChange={handleCloseProject}>
-        <DialogContent className="max-w-4xl md:max-w-5xl">
+        <DialogContent className="max-w-[95vw] sm:max-w-[90vw] md:max-w-4xl lg:max-w-5xl max-h-[90vh] overflow-y-auto">
           {activeProject && (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <DialogHeader className="space-y-3">
                 <DialogTitle>{activeProject.title}</DialogTitle>
                 <DialogDescription className="text-base text-muted-foreground">
@@ -279,7 +279,7 @@ export function Projects() {
                     disablePictureInPicture
                     className="h-full w-full object-cover"
                   >
-                    <source src={activeProject.video} type="video/mp4" />
+                    <source src={activeProject.video} type="video/webm" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
